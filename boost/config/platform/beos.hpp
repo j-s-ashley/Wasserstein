@@ -21,4 +21,3 @@
 
 // boilerplate code:
 #include <boost/config/detail/posix_features.hpp>
-
