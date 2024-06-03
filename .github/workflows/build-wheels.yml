@@ -4,8 +4,18 @@ on:
   push:
     branches:
       - master
+      - fix/libomp-install
   workflow_dispatch:
-
+  workflow_call:
+    inputs:
+      plan:
+        required: true
+        type: string
+  pull_request:
+    paths:
+      - pyproject.toml
+      - .github/workflows/build-wheels.yml
+      - .github/workflows/ci.yml
 env:
   PYPI: 1
   PYPITEST: 1
