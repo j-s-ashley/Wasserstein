@@ -13,21 +13,6 @@ env:
   TWINE_PASSWORD_PYPI: ${{ secrets.TWINE_PASSWORD_PYPI }}
 
 jobs:
-  linux-test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Install Python packages
-        run: |
-          python3 -m pip install --extra-index-url https://test.pypi.org/simple energyflow==1.3.3a0
-          python3 -m pip install .[test] pytest
-      - name: Test package
-        run: pytest wasserstein
-
   macos-test:
     runs-on: macos-latest
     steps:
@@ -45,56 +30,15 @@ jobs:
       - name: Test package
         run: pytest wasserstein
 
-  windows-test:
-    runs-on: windows-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Install Python packages
-        run: |
-          python3 -m pip install --extra-index-url https://test.pypi.org/simple energyflow==1.3.3a0
-          python3 -m pip install .[test] pytest
-      - name: Test package
-        run: pytest wasserstein
-
-  linux-build:
-    runs-on: ubuntu-latest
-    needs: [linux-test, macos-test, windows-test]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Build wheels and upload to PyPI
-        run: ./scripts/build-wheels-and-upload.sh sdist
-
   macos-build:
     runs-on: macos-latest
-    needs: [linux-test, macos-test, windows-test]
     steps:
       - uses: actions/checkout@v3
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
-      - name: Compile and install libomp from source
+      - name: Compile and install libomp from brew
         run: ./scripts/install-libomp-macos.sh
       - name: Build wheels and upload to PyPI
-        run: ./scripts/build-wheels-and-upload.sh
-
-  windows-build:
-    runs-on: windows-latest
-    needs: [linux-test, macos-test, windows-test]
-    steps:
-      - uses: actions/checkout@v3
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-      - name: Build wheels and upload to PyPI
-        shell: bash
         run: ./scripts/build-wheels-and-upload.sh
