@@ -15,12 +15,6 @@ on:
       - pyproject.toml
       - .github/workflows/build-wheels.yml
       - .github/workflows/ci.yml
-env:
-  PYPI: 1
-  PYPITEST: 1
-  TWINE_USERNAME: __token__
-  TWINE_PASSWORD_PYPITEST: ${{ secrets.TWINE_PASSWORD_PYPITEST }}
-  TWINE_PASSWORD_PYPI: ${{ secrets.TWINE_PASSWORD_PYPI }}
 
 jobs:
   macos-test:
