@@ -29,7 +29,7 @@ keywords = [
 	"ot",
 	"particle physics",
 	"wasserstein"]
-dependencies = ["importlib-metadata; python_version<"3.10"']
+dependencies = ['importlib-metadata; python_version<"3.10"']
 
 
 [tool.cibuildwheel]
