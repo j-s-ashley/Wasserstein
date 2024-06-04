@@ -8,30 +8,6 @@ requires = [
 
 build-backend = "setuptools.build_meta"
 
-[project]
-name = "Wasserstein"
-authors = [ {name = "Patrick T. Komiske III", email = "pkomiske@mit.edu"}, ]
-readme = "README.md"
-requires-python = ">=3.9"
-license = {text = "LICENSE"}
-keywords = [
-	"distance",
-	"earth mover's distance",
-	"energy mover's distance",
-	"emd",
-	"fastjet",
-	"jfcontrib",
-	"hidden geometry",
-	"irc-safe",
-	"infrared safety",
-	"metric",
-	"optimal transport",
-	"ot",
-	"particle physics",
-	"wasserstein"]
-dependencies = ['importlib-metadata; python_version<"3.10"']
-dynamic = ["version"]
-
 [tool.cibuildwheel]
 
 skip = "pp* *musllinux*"
