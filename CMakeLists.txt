@@ -7,29 +7,27 @@ project(
 	VERSION 1.1.0
 	LANGUAGES CXX)
 
-find_package(OpenMP)
-if(OpenMP_CXX_FOUND)
-	target_link_libraries(wasserstein PUBLIC OpenMP::OpenMP_CXX)
-endif()
+set(src "wasserstein")
+set(wasserstein_src "wasserstein/wasserstein.cpp")
+
+add_library(wasserstein SHARED ${wasserstein_src})
+
+find_package(
+	OpenMP
+	REQUIRED)
 
 find_package(
 	Python
 	COMPONENTS Interpreter Development.Module
 	REQUIRED)
 
-find_package(
-	SWIG
-	COMPONENTS python
-	REQUIRED)
-
-add_library(wasserstein wasserstein.cpp Wasserstein.hh)
-
+include(FindSWIG)
 include(UseSWIG)
 
 swig_add_library(
-	wasserstein
+	swig_wasserstein
 	LANGUAGE python
-	SOURCES wasserstein/swig/wasserstein.i wasserstein/wasserstein.cpp)
+	SOURCES "wasserstein/swig/wasserstein.i" "wasserstein/wasserstein.cpp")
 if(WIN32)
 	set_property(TARGET wasserstein 
 		PROPERTY SUFFIX ".${Python_SOABI}.pyd")
@@ -37,4 +35,5 @@ else()
 	set_property(TARGET wasserstein
 		PROPERTY SUFFIX ".${Python_SOABI}${CMAKE_SHARED_MODULE_SUFFIX}")
 endif()
-target_link_libraries(wasserstein PRIVATE Python::Module)
+
+target_link_libraries(wasserstein PRIVATE OpenMP::OpenMP_CXX)
