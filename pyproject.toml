@@ -1,10 +1,36 @@
 [build-system]
 
 requires = [
-    "setuptools>=42",
-    "wheel>=0.36",
-    "oldest-supported-numpy",
-]
+	"setuptools>=42",
+	"wheel>=0.36",
+	"oldest-supported-numpy",
+	"swig"]
+
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "Wasserstein"
+authors = [ {name = "Patrick T. Komiske III", email = "pkomiske@mit.edu"}, ]
+readme = "README.md"
+requires-python">=3.9"
+license = {text = "LICENSE"}
+keywords = [
+	"distance",
+	"earth mover's distance",
+	"energy mover's distance",
+	"emd",
+	"fastjet",
+	"jfcontrib",
+	"hidden geometry",
+	"irc-safe",
+	"infrared safety",
+	"metric",
+	"optimal transport",
+	"ot",
+	"particle physics",
+	"wasserstein"]
+dependencies = ["importlib-metadata; python_version<"3.10"']
+
 
 [tool.cibuildwheel]
 
