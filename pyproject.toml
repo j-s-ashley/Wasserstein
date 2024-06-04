@@ -12,7 +12,7 @@ build-backend = "setuptools.build_meta"
 name = "Wasserstein"
 authors = [ {name = "Patrick T. Komiske III", email = "pkomiske@mit.edu"}, ]
 readme = "README.md"
-requires-python">=3.9"
+requires-python = ">=3.9"
 license = {text = "LICENSE"}
 keywords = [
 	"distance",
