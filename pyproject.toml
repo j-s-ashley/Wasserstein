@@ -1,10 +1,12 @@
 [build-system]
 
 requires = [
-    "setuptools>=42",
-    "wheel>=0.36",
-    "oldest-supported-numpy",
-]
+	"setuptools>=42",
+	"wheel>=0.36",
+	"oldest-supported-numpy",
+	"swig"]
+
+build-backend = "setuptools.build_meta"
 
 [tool.cibuildwheel]
 
