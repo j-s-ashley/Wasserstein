@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - master
-      - fix/libomp-install
+      - fix/libomp-install-cmake
   workflow_call:
     inputs:
       plan:
@@ -52,9 +52,11 @@ jobs:
     needs: [linux-test, macos-test, windows-test]
     steps:
       - uses: actions/checkout@v4
+
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+
       - name: Build wheels and upload to PyPI
         run: ./scripts/build-wheels-and-upload.sh
