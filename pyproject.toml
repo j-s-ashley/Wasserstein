@@ -13,6 +13,7 @@ build-backend = "setuptools.build_meta"
 skip = "pp* *musllinux*"
 test-skip = "*i686 *win32 *-macosx_arm64"
 
+# Unnecessary, see: Action/Tests #38 Install Python packages Line 1
 #before-test = "pip install cython; pip install --extra-index-url https://test.pypi.org/simple energyflow==1.3.3a0"
 test-command = "pytest {package}"
 test-requires = ["pytest", "numpy", "pot", "energyflow"]
