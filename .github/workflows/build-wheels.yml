@@ -23,13 +23,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Checkout LLVM-OpenMP
-        uses: actions/checkout@v4
-        with: 
-          repository: llvm/llvm-project
-          ref: llvmorg-18.1.6
-          sparse-checkout: openmp
-
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
