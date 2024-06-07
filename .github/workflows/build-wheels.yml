@@ -35,9 +35,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install Python packages
-        run: |
-          python3 -m pip install --extra-index-url https://test.pypi.org/simple energyflow==1.3.3a0
-          python3 -m pip install .[test] pytest
-      - name: Test package
-        run: pytest wasserstein
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.18.1
+
+      - name: Upload wheels to GH
+        uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheel-${{ macos-latest }}
+          path: wheelhouse/*.whl
