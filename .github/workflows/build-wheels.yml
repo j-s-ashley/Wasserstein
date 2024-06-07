@@ -41,5 +41,5 @@ jobs:
       - name: Upload wheels to GH
         uses: actions/upload-artifact@v4
         with:
-          name: cibw-wheel-${{ macos-latest }}
+          name: cibw-wheel
           path: wheelhouse/*.whl
