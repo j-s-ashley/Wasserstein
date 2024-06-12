@@ -58,5 +58,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Build wheels and upload to PyPI
-        run: ./scripts/build-wheels-and-upload.sh
+      - name: Build wheels
+        uses: pypa/cibuildwheel@v2.18.1
+
+      - name: Upload wheels to GH
+        uses: actions/upload-artifact@v4
+        with:
+          name: cibw-wheels-${{ matrix.os }}
+          path: wheelhouse/*.whl
