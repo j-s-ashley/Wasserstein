@@ -59,6 +59,3 @@ jobs:
           python-version: '3.12'
       - name: Build wheels and upload to PyPI
         run: ./scripts/build-wheels-and-upload.sh
-
-      - name: cibw-wheel
-        path: wheelhouse/*.whl
