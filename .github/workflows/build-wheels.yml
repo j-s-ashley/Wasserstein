@@ -30,7 +30,7 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/llvm/llvm-project.git
           cd llvm-project
-          cmake -S llvm -B build -DLLVM_ENABLE_PROJECTS='openmp' -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake -S llvm -B build -DLLVM_ENABLE_PROJECTS='openmp' -DCMAKE_BUILD_TYPE=Debug
 
       - name: Checkout Wasserstein
         uses: actions/checkout@v4
@@ -61,7 +61,7 @@ jobs:
         run: |
           git clone --depth 1 https://github.com/llvm/llvm-project.git
           cd llvm-project
-          cmake -S llvm -B build -DLLVM_ENABLE_PROJECTS='openmp' -DCMAKE_BUILD_TYPE=Debug -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++
+          cmake -S llvm -B build -DLLVM_ENABLE_PROJECTS='openmp' -DCMAKE_BUILD_TYPE=Debug
 
       - name: Checkout Wasserstein
         uses: actions/checkout@v4
