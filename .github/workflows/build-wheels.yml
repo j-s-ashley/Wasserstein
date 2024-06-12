@@ -51,8 +51,22 @@ jobs:
         os: [ubuntu-latest, windows-2019, macos-13]
     needs: tests
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout LLVM-OpenMP
+        uses: actions/checkout@v4
+        with: 
+          repository: llvm/llvm-project
+          ref: release/18.x
 
+      - name: Build OpenMP
+        uses: threeal/cmake-action@main
+        with:
+          source-dir: openmp
+          build-dir: openmp/build
+          c-compiler: clang
+          cxx-compiler: clang++
+
+      - name: Checkout Wasserstein
+        uses: actions/checkout@v4
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
