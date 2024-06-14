@@ -36,14 +36,15 @@ jobs:
       - name: Build OpenMP on MacOS
         if: matrix.os == 'macos-13'
         run: |
-          cd /Users/runner/work/Wasserstein/Wasserstein/llvm-project/openmp
-          la #DEBUG
+          ls -a #DEBUG
+          cd /Users/runner/work/Wasserstein/Wasserstein/openmp
+          ls -a #DEBUG
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /Users/runner/work/Wasserstein/Wasserstein/llvm-project/openmp
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /Users/runner/work/Wasserstein/Wasserstein/openmp
           make
           make install
-          la /Users/runner/work/Wasserstein/Wasserstein #DEBUG
+          ls -a /Users/runner/work/Wasserstein/Wasserstein #DEBUG
 
       - name: Checkout Wasserstein
         uses: actions/checkout@v4
