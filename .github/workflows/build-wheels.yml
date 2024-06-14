@@ -36,15 +36,12 @@ jobs:
       - name: Build OpenMP on MacOS
         if: matrix.os == 'macos-13'
         run: |
-          ls -a #DEBUG
           cd /Users/runner/work/Wasserstein/Wasserstein/openmp
-          ls -a #DEBUG
           mkdir build
           cd build
           cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /Users/runner/work/Wasserstein/Wasserstein/openmp
           make
           make install
-          ls -a /Users/runner/work/Wasserstein/Wasserstein #DEBUG
 
       - name: Checkout Wasserstein
         uses: actions/checkout@v4
@@ -71,11 +68,22 @@ jobs:
         os: [ubuntu-latest, windows-2019, macos-13]
     needs: tests
     steps:
-      - name: Checkout and build LLVM-OpenMP
+      - name: Checkout LLVM on MacOS
+        if: matrix.os == 'macos-13'
+        uses: actions/checkout@v4
+        with:
+          repository: llvm/llvm-project
+          ref: release/18.x
+
+      - name: Build OpenMP on MacOS
+        if: matrix.os == 'macos-13'
         run: |
-          git clone --depth 1 https://github.com/llvm/llvm-project.git
-          cd llvm-project
-          cmake -S llvm -B build -DLLVM_ENABLE_PROJECTS='openmp' -DCMAKE_BUILD_TYPE=Debug
+          cd /Users/runner/work/Wasserstein/Wasserstein/openmp
+          mkdir build
+          cd build
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /Users/runner/work/Wasserstein/Wasserstein/openmp
+          make
+          make install
 
       - name: Checkout Wasserstein
         uses: actions/checkout@v4
