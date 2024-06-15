@@ -94,7 +94,7 @@ jobs:
           python-version: '3.9'
 
       - name: Build wheels
-        uses: pypa/cibuildwheel@v2.18.1
+        uses: pypa/cibuildwheel@v2.19
 
       - name: Upload wheels to GH
         uses: actions/upload-artifact@v4
