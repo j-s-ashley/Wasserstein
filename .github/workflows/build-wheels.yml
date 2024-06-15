@@ -39,7 +39,7 @@ jobs:
           cd /Users/runner/work/Wasserstein/Wasserstein/openmp
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /Users/runner/work/Wasserstein/Wasserstein/openmp
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(brew --prefix) -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLIBOMP_INSTALL_ALIASES=OFF /Users/runner/work/Wasserstein/Wasserstein/openmp
           make
           make install
 
@@ -81,7 +81,7 @@ jobs:
           cd /Users/runner/work/Wasserstein/Wasserstein/openmp
           mkdir build
           cd build
-          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ /Users/runner/work/Wasserstein/Wasserstein/openmp
+          cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$(brew --prefix) -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DLIBOMP_INSTALL_ALIASES=OFF /Users/runner/work/Wasserstein/Wasserstein/openmp
           make
           make install
 
