@@ -45,7 +45,7 @@ jobs:
 
     - name: Checkout LLVM on macOS
       if: >-
-          matrix.os == 'macos-13' 
+          matrix.os == 'macos-13'
           || matrix.os == 'macos-latest'
       uses: actions/checkout@v4
       with:
@@ -55,7 +55,7 @@ jobs:
 
     - name: Build OpenMP on macOS
       if: >-
-          matrix.os == 'macos-13' 
+          matrix.os == 'macos-13'
           || matrix.os == 'macos-latest'
       env:
         MACOSX_DEPLOYMENT_TARGET: "10.9"
