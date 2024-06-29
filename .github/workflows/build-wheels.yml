@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - ci/debug
   workflow_dispatch:
 
 jobs:
