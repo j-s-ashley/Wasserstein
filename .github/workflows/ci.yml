@@ -44,7 +44,9 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Checkout LLVM on macOS
-      if: matrix.os == 'macos-13' || 'macos-latest'
+      if: >-
+          matrix.os == 'macos-13' 
+          || matrix.os == 'macos-latest'
       uses: actions/checkout@v4
       with:
         repository: llvm/llvm-project
@@ -52,7 +54,9 @@ jobs:
         path: llvm-project
 
     - name: Build OpenMP on macOS
-      if: matrix.os == 'macos-13' || 'macos-latest'
+      if: >-
+          matrix.os == 'macos-13' 
+          || matrix.os == 'macos-latest'
       env:
         MACOSX_DEPLOYMENT_TARGET: "10.9"
       working-directory: llvm-project
