@@ -43,6 +43,9 @@ jobs:
       - name: Checkout Wasserstein repo
         uses: actions/checkout@v4
 
+      - name: Setup UV
+        uses: yezz123/setup-uv@v4
+
       - name: cibw-wheel
         uses: pypa/cibuildwheel@v2.19
 
