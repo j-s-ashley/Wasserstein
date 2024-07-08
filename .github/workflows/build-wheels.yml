@@ -24,6 +24,7 @@ jobs:
           path: llvm-project
 
       - name: Build OpenMP on macOS
+        id: build-omp
         if: matrix.os == 'macos-13'
         env:
           MACOSX_DEPLOYMENT_TARGET: "10.9"
@@ -39,6 +40,16 @@ jobs:
             -B build
           cmake --build build --parallel
           cmake --install build
+          echo "::set-output name=dir::$(brew --prefix)"
+
+      - name: Setup OpenMP cache
+        if: matrix.os == 'macos-13'
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.build-omp.outputs.dir }}
+          key: ${{ matrix.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ matrix.os }}-node-
 
       - name: Checkout Wasserstein repo
         uses: actions/checkout@v4
