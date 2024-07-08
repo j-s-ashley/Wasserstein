@@ -8,6 +8,7 @@ build-backend = "setuptools.build_meta"
 
 
 [tool.cibuildwheel]
+build-frontend = "build[uv]"
 skip = "pp* *musllinux*"
 test-skip = "*i686 *win32 *-macosx_arm64"
 before-test = "pip install cython; pip install git+https://github.com/thaler-lab/EnergyFlow.git"
