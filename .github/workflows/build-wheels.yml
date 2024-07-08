@@ -40,13 +40,13 @@ jobs:
             -B build
           cmake --build build --parallel
           cmake --install build
-          echo "::set-output name=dir::$(brew --prefix)"
+          echo "{dir}={$(brew --prefix)}" >> $BREW_PREFIX
 
       - name: Setup OpenMP cache
         if: matrix.os == 'macos-13'
         uses: actions/cache@v3
         with:
-          path: ${{ steps.build-omp.outputs.dir }}
+          path: ${{ $BREW_PREFIX }}
           key: ${{ matrix.os }}-node-${{ hashFiles('**/package-lock.json') }}
           restore-keys: |
             ${{ matrix.os }}-node-
