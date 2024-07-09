@@ -73,6 +73,7 @@ jobs:
         # FIXME: c.f. https://github.com/thaler-lab/Wasserstein/issues/46
         python -m pip uninstall --yes EnergyFlow
         python -m pip install "git+https://github.com/thaler-lab/EnergyFlow.git"
+        python -m pip install coverage
 
     - name: List installed Python packages
       run: python -m pip list
@@ -80,4 +81,4 @@ jobs:
     - name: Test with pytest and coverage
       # FIXME: Running with coverage causes failures
       run: |
-        pytest tests
+        coverage run -m pytest tests
