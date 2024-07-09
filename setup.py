@@ -34,21 +34,6 @@ import re
 import subprocess
 import sys
 
-# generate swig wrapper
-if sys.argv[1] == 'swig':
-    command = ('swig -python -c++ -fastproxy -w511 -keyword -py3 '
-               '-o wasserstein/wasserstein.cpp wasserstein/swig/wasserstein.i')
-    print(command)
-    subprocess.run(command.split())
-
-    # patch up output
-    with fileinput.input('wasserstein/wasserstein.cpp', inplace=True) as f:
-        for line in f:
-            if 'define' in line and 'SWIG_name' in line:
-                sys.stdout.write('#define SWIG_name "#WASSERSTEIN_SWIG_NAME"')
-            else:
-                sys.stdout.write(line)
-
 # compile python package
 else:
 
